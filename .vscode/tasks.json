@@ -1,0 +1,53 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+		{
+            "label": "Build C++",
+            "type": "shell",
+            "command": "/usr/bin/clang++",
+            "args": [
+                "-std=c++20",
+                "-g",
+                "${file}",
+                "-o",
+                "build/${fileBasenameNoExtension}/${fileBasenameNoExtension}"
+            ],
+            // This runs the folder creation BEFORE the compiler starts
+            "dependsOn": ["Create Build Folder"],
+			"options": {
+				"cwd": "${workspaceFolder}"
+			},
+            "problemMatcher": ["$gcc"],
+			"presentation": { "reveal": "silent", "close": true }
+        },
+        {
+            "label": "Create Build Folder",
+            "type": "shell",
+            "command": "mkdir",
+            "args": ["-p", "build/${fileBasenameNoExtension}"],
+			"options": {
+				"cwd": "${workspaceFolder}"
+			},
+			"presentation": { "reveal": "silent", "close": true }
+        },
+        {
+            "label": "Build and Run C++",
+            "type": "shell",
+            "command": "build/${fileBasenameNoExtension}/${fileBasenameNoExtension}",
+            "dependsOn": ["Build C++"], // This ensures it builds before it runs
+			"options": {
+				"cwd": "${workspaceFolder}"
+			},
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "reveal": "always",
+                "focus": true,
+                "panel": "shared",
+                "clear": true
+            }
+        }
+    ]
+}

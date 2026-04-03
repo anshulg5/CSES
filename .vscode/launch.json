@@ -1,0 +1,28 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "(MacOS): C++ Launch LLDB Debug",
+            "type": "lldb",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/${fileBasenameNoExtension}/${fileBasenameNoExtension}",
+            "args": [],
+            "cwd": "${workspaceFolder}",
+            "preLaunchTask": "Build C++"
+            // "terminal": "integrated" `is not needed for lldb, it will use the integrated terminal by default
+        },
+        {
+            "name": "(Native): C++ Launch Native Debug",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/${fileBasenameNoExtension}/${fileBasenameNoExtension}",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": true, // Optional: Use an external console for better input handling
+            "MIMode": "lldb",
+            "preLaunchTask": "Build C++"
+        }
+    ]
+}

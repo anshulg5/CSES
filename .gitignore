@@ -38,6 +38,9 @@ build/
 
 # VS Code
 .vscode/
+!.vscode/launch.json  # Don't ignore launch.json for debugging configurations
+!.vscode/tasks.json  # Don't ignore tasks.json for build configurations
+!.vscode/extensions.json  # Don't ignore extensions.json for recommended extensions
 
 # Operating System Files
 .DS_Store # macOS

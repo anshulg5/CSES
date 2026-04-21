@@ -7,6 +7,10 @@
             "command": "/usr/bin/clang++",
             "args": [
                 "-std=c++20",
+                "-Wall",
+                "-Wextra",
+                "-Wpedantic",
+                "-Werror",
                 "-g",
                 "${file}",
                 "-o",
